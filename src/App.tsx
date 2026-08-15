@@ -217,10 +217,10 @@ export default function App() {
             <a href="https://www.codesapiens.in/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-green transition-colors">
               Official_Website
             </a>
-            <a href="https://discord.gg/BEUfEjp6X" target="_blank" rel="noopener noreferrer" className="hover:text-brand-green transition-colors">
-              Discord_Server
+            <a href="https://whatsapp.com/channel/0029Vb4qJ5g0LKZ6qNdf6i1t" target="_blank" rel="noopener noreferrer" className="hover:text-brand-green transition-colors">
+              Whatsapp_Channel
             </a>
-            <a href="https://github.com/Tazimsheriff/CodeSapiens-Summer-Fest" target="_blank" rel="noopener noreferrer" className="hover:text-brand-green transition-colors">
+            <a href="https://github.com/CodeSapiens-in/CollegeSapien" target="_blank" rel="noopener noreferrer" className="hover:text-brand-green transition-colors">
               Github_Repo
             </a>
           </div>
