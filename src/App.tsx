@@ -94,16 +94,13 @@ export default function App() {
         <div className="flex items-center gap-3">
           <img 
             src="https://i.ibb.co/Wv8FVTGQ/codesapiens-logo.jpg" 
-            alt="CSF Logo" 
+            alt="CodeSapiens Logo" 
             className="w-10 h-10 md:w-12 md:h-12 object-contain" 
             referrerPolicy="no-referrer" 
           />
           <div className="flex flex-col">
             <span className="font-display font-black text-xl md:text-3xl tracking-tighter leading-none text-white uppercase italic glow-text-sm">
               CODESAPIENS
-            </span>
-            <span className="text-[8px] md:text-[10px] font-mono text-brand-green tracking-[0.4em] font-bold uppercase">
-              SUMMER FEST '26
             </span>
           </div>
         </div>
