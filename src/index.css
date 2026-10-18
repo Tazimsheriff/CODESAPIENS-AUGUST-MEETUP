@@ -1,183 +1,187 @@
-@import url('https://fonts.googleapis.com/css2?family=Internal+Grotesk:wght@400;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui;
-  --font-display: "Space Grotesk", sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", monospace;
-  
-  --color-brand-green: #00FF00;
-  --color-brand-black: #000000;
-  --color-brand-white: #ffffff;
-  --color-brand-cyan: #00f2ff;
-  
-  /* Track Colors updated for high-contrast theme */
-  --color-track-1: #00FF00;
-  --color-track-2: #ffffff;
-  --color-track-3: #1a1a1a;
+  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Bricolage Grotesque", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-cream: #feeec3;
+  --color-yellow: #ffd966;
+  --color-black: #0a0a0a;
+  --color-lime: #d2ffb6;
+  --color-blue: #b6eaff;
+}
+
+:root {
+  --color-cream: #feeec3;
+  --color-yellow: #ffd966;
+  --color-black: #0a0a0a;
+  --color-lime: #d2ffb6;
+  --color-blue: #b6eaff;
+
+  --edge: #0a0a0a;
+  --bdr-sm: 2px solid #0a0a0a;
+  --bdr: 2.5px solid #0a0a0a;
+  --bdr-thick: 3px solid #0a0a0a;
+  --sh-sm: 2px 2px 0 #0a0a0a;
+  --sh: 4px 4px 0 #0a0a0a;
+  --sh-md: 5px 5px 0 #0a0a0a;
+  --sh-lg: 8px 8px 0 #0a0a0a;
 }
 
 @layer base {
+  * {
+    box-sizing: border-box;
+  }
+
   body {
-    @apply bg-brand-black text-brand-white font-sans selection:bg-brand-green selection:text-brand-black;
-    background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%);
+    background-color: var(--color-cream);
+    color: var(--color-black);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #ffd966;
+    color: #0a0a0a;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.025em;
+  }
+
+  a:focus-visible,
+  button:focus-visible {
+    outline: 3px solid #0a0a0a;
+    outline-offset: 2px;
   }
 }
 
-.stars-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
+/* ── Neo-Brutalist Dot Grid Background ── */
+.neo-grid-bg {
+  background-color: var(--color-cream);
+  background-image: radial-gradient(rgba(10, 10, 10, 0.12) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
 }
 
-.star {
-  position: absolute;
-  background: white;
-  border-radius: 50%;
-  opacity: 0.5;
-  animation: twinkle var(--duration, 3s) infinite ease-in-out;
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.2); }
-}
-
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.animate-spin-slow {
-  animation: spin-slow 12s linear infinite;
-}
-
-.brutal-border {
-  border: 1px solid var(--color-brand-green);
-}
-
-.cyan-border {
-  border: 1px solid var(--color-brand-cyan);
-}
-
-.white-border {
-  border: 1px solid var(--color-brand-white);
-}
-
-.text-stroke {
-  -webkit-text-stroke: 1px var(--color-brand-white);
-  color: transparent;
-}
-
-.terminal-card {
-  @apply bg-black border border-white/10 hover:border-brand-green transition-colors duration-300;
-}
-
-.monospace-label {
-  @apply font-mono text-[10px] uppercase tracking-widest text-brand-green opacity-70;
-}
-
-.glow-text {
-  text-shadow: 0 4px 12px rgba(0,0,0,0.5), 0 0 20px rgba(255, 255, 255, 0.4), 0 0 40px rgba(0, 255, 0, 0.2);
-}
-
-.glow-text-sm {
-  text-shadow: 0 2px 8px rgba(0,0,0,0.4), 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(0, 255, 0, 0.1);
-}
-
-.glow-white {
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4), 0 0 20px rgba(255, 255, 255, 0.2);
-}
-
-.glow-neon {
-  text-shadow: 0 0 5px #39FF14, 0 0 10px #39FF14, 0 0 20px #39FF14, 0 0 40px #39FF14;
-}
-
-.scanlines {
-  background: linear-gradient(
-    rgba(18, 16, 16, 0) 50%,
-    rgba(0, 0, 0, 0.1) 50%
-  ), linear-gradient(
-    90deg,
-    rgba(255, 0, 0, 0.02),
-    rgba(0, 255, 0, 0.01),
-    rgba(0, 0, 255, 0.02)
+/* ── Neo-Brutalist Stripes & Borders ── */
+.neo-stripes-yellow {
+  background: repeating-linear-gradient(
+    45deg,
+    #ffd966,
+    #ffd966 12px,
+    #f2cc55 12px,
+    #f2cc55 24px
   );
-  background-size: 100% 4px, 3px 100%;
-  pointer-events: none;
 }
 
-.dot-grid {
-  background-image: radial-gradient(rgba(57, 255, 20, 0.05) 1px, transparent 1px);
-  background-size: 20px 20px;
-  pointer-events: none;
+.neo-stripes-lime {
+  background: repeating-linear-gradient(
+    -45deg,
+    #d2ffb6,
+    #d2ffb6 10px,
+    #c1f2a3 10px,
+    #c1f2a3 20px
+  );
 }
 
-.hero-bg {
-  background: radial-gradient(circle at 50% 50%, #0a1f0a 0%, #000000 100%);
+/* ── Neo-Brutalist Shadow Utilities ── */
+.nb-shadow-sm {
+  box-shadow: 2px 2px 0 #0a0a0a;
 }
 
-@keyframes cursor-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+.nb-shadow {
+  box-shadow: 4px 4px 0 #0a0a0a;
 }
 
-.cursor-blink::after {
-  content: "|";
-  animation: cursor-blink 1s infinite;
-  margin-left: 4px;
+.nb-shadow-md {
+  box-shadow: 5px 5px 0 #0a0a0a;
 }
 
-.cyber-button {
-  @apply border border-brand-cyan text-brand-cyan px-8 py-3 font-mono text-xs uppercase tracking-widest hover:bg-brand-cyan hover:text-black transition-all duration-300;
-  box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+.nb-shadow-lg {
+  box-shadow: 8px 8px 0 #0a0a0a;
 }
 
-.grid-bg {
-  background-image: 
-    linear-gradient(to right, rgba(255,255,255,0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 40px 40px;
+.nb-shadow-lime {
+  box-shadow: 4px 4px 0 #d2ffb6;
 }
 
-.tab-active {
-  @apply border-b-2 border-brand-cyan text-brand-white;
+.nb-shadow-yellow {
+  box-shadow: 4px 4px 0 #ffd966;
 }
 
-.track-pill {
-  @apply px-2 py-1 rounded text-[8px] font-mono font-bold border;
+/* ── Neo-Brutalist Button Utility ── */
+.nb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 14px;
+  border: 2.5px solid #0a0a0a;
+  border-radius: 4px;
+  box-shadow: 3px 3px 0 #0a0a0a;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.15s ease;
 }
 
-.track-pill-1 { @apply border-brand-green text-brand-green bg-brand-green/10; }
-.track-pill-2 { @apply border-purple-500 text-purple-400 bg-purple-500/10; }
-.track-pill-3 { @apply border-brand-cyan text-brand-cyan bg-brand-cyan/10; }
+.nb-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 #0a0a0a;
+}
 
-/* Countdown Timer Animations */
-@keyframes pulse-glow {
-  0%, 100% { 
-    opacity: 1;
-    filter: drop-shadow(0 0 8px rgba(57, 255, 20, 0.6));
+.nb-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 #0a0a0a;
+}
+
+/* ── Neo-Brutalist Pill / Eyebrow ── */
+.nb-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 2px solid #0a0a0a;
+  border-radius: 4px;
+  box-shadow: 2px 2px 0 #0a0a0a;
+  line-height: 1.2;
+}
+
+/* ── Neo-Brutalist Card ── */
+.nb-card {
+  border: 2.5px solid #0a0a0a;
+  border-radius: 6px;
+  background-color: #ffffff;
+  box-shadow: 5px 5px 0 #0a0a0a;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s ease;
+}
+
+.nb-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 8px 8px 0 #0a0a0a;
+}
+
+/* ── Accessibility & Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transform: none !important;
   }
-  50% { 
-    opacity: 0.8;
-    filter: drop-shadow(0 0 16px rgba(57, 255, 20, 0.3));
-  }
-}
-
-@keyframes blink {
-  0%, 49%, 100% { opacity: 1; }
-  50%, 99% { opacity: 0.3; }
-}
-
-.animate-pulse-glow {
-  animation: pulse-glow 2.5s ease-in-out infinite;
-}
-
-.animate-blink {
-  animation: blink 1s ease-in-out infinite;
 }
